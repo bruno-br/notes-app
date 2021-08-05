@@ -1,0 +1,5 @@
+.notes-collection {
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem 0 2rem;
+}

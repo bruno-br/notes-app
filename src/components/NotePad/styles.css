@@ -1,7 +1,7 @@
 .notepad {
   display: flex;
   flex-direction: column;
-  padding-left: 2rem;
+  padding: 0 2rem 0 2rem;
 }
 
 .notepad h1 {
