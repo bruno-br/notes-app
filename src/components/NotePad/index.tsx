@@ -6,6 +6,9 @@ function NotePad() {
       <h1>Bloco de notas</h1>
       <input type="text" defaultValue="Assunto" />
       <textarea>Texto</textarea>
+      <div className="btn-container">
+        <button>CRIAR NOTA</button>
+      </div>
     </div>
   );
 }
