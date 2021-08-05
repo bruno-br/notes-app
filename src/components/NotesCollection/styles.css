@@ -1,5 +1,9 @@
 .notes-collection {
   display: flex;
   flex-direction: column;
-  padding: 0 2rem 0 2rem;
+  padding-left: 4rem;
+}
+
+.notes-collection h1 {
+  margin-bottom: 3rem;
 }
