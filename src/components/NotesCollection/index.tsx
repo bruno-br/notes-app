@@ -7,7 +7,19 @@ function NotePad() {
   return (
     <div className="notes-collection">
       <h1>Suas notas</h1>
-      <Note title={title} description={desc} />
+      <div className="notes-grid">
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+        <Note title={title} description={desc} />
+      </div>
     </div>
   );
 }
