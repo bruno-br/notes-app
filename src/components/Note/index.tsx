@@ -1,4 +1,5 @@
 import "./styles.css";
+import img_delete from "../../assets/cancel_36dp.svg";
 
 interface Props {
   title: string;
@@ -14,10 +15,15 @@ function Note({ title, description }: Props) {
   }
 
   return (
-    <div className="note">
-      <h2>{title}</h2>
-      <hr />
-      <p>{cropText("Empresa de pesquisa e inteligência", 31)}</p>
+    <div className="note-container">
+      <button className="note-delete">
+        <img src={img_delete} alt="Delete" />
+      </button>
+      <div className="note">
+        <h2>{title}</h2>
+        <hr />
+        <p>{cropText(description, 31)}</p>
+      </div>
     </div>
   );
 }

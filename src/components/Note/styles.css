@@ -1,9 +1,13 @@
-.note {
+.note-container {
+  position: relative;
   background: var(--color-note);
   color: var(--color-text);
   width: 20rem;
   border-radius: 1rem;
   padding: 0.5rem 3rem 0.5rem 3rem;
+}
+
+.note {
   font-size: large;
 }
 
@@ -13,4 +17,12 @@
 
 .note hr {
   border-top: dashed 1px;
+}
+
+.note-delete {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  border: none;
+  background-color: transparent;
 }
