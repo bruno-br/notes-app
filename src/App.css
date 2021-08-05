@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
 :root {
-  font-family: "Montserrat", sans-serif;
   --color-background: white;
   --color-title: #8e4396;
   --color-note: #f3f3f3;
@@ -11,11 +10,22 @@
   font-weight: 500;
 }
 
+body,
+input,
+textarea {
+  font-family: "Montserrat", sans-serif;
+  color: var(--color-text);
+}
+
 body {
   background: var(--color-background);
 }
 
 h1 {
-  color: var(--color-title);
   font-size: 400;
+  color: var(--color-title);
+}
+
+.container {
+  display: flex;
 }
