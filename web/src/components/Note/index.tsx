@@ -24,7 +24,7 @@ function Note({ note_id, title, description }: Props) {
         <img src={img_delete} alt="Delete" />
       </button>
       <div className="note">
-        <h2>{title}</h2>
+        <h2>{cropText(title, 20)}</h2>
         <hr />
         <p>{cropText(description, 31)}</p>
       </div>

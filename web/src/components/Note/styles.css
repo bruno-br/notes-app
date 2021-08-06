@@ -14,6 +14,7 @@
 
 .note h2 {
   color: var(--color-note-title);
+  font-size: larger;
 }
 
 .note hr {
