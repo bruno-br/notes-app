@@ -12,6 +12,7 @@ interface NotesContextData {
   notes: NoteData[];
   getNotes: () => void;
   createNote: (title: string, description: string) => void;
+  deleteNote: (id: string) => void;
 }
 
 const NotesContext = createContext({} as NotesContextData);
@@ -38,12 +39,22 @@ function NotesProvider({ children }: NotesProviderProps) {
     }
   }
 
+  async function deleteNote(id: string) {
+    await api.delete("/notes", { data: { id } });
+    const noteIndex = notes.findIndex((note) => note.id === id);
+    if (noteIndex > -1) {
+      let newNotes = notes;
+      newNotes.splice(noteIndex, 1);
+      setNotes([...newNotes]);
+    }
+  }
+
   useEffect(() => {
     getNotes();
   }, []);
 
   return (
-    <NotesContext.Provider value={{ notes, getNotes, createNote }}>
+    <NotesContext.Provider value={{ notes, getNotes, createNote, deleteNote }}>
       {children}
     </NotesContext.Provider>
   );

@@ -1,6 +1,7 @@
 import "./styles.css";
 import img_delete from "../../assets/cancel_36dp.svg";
-import { api } from "../../services/api";
+import { useContext } from "react";
+import { NotesContext } from "../../contexts/NotesContext";
 interface Props {
   note_id: string;
   title: string;
@@ -15,13 +16,11 @@ function Note({ note_id, title, description }: Props) {
     return text;
   }
 
-  async function deleteNote() {
-    await api.delete("/notes", { data: { id: note_id } });
-  }
+  const { deleteNote } = useContext(NotesContext);
 
   return (
     <div className="note-container">
-      <button className="note-delete" onClick={deleteNote}>
+      <button className="note-delete" onClick={() => deleteNote(note_id)}>
         <img src={img_delete} alt="Delete" />
       </button>
       <div className="note">
