@@ -1,24 +1,33 @@
 import "./styles.css";
 import Note from "../Note";
+import { api } from "../../services/api";
+import { useState } from "react";
+import { useEffect } from "react";
+
+interface NoteProps {
+  title: string;
+  description: string;
+}
 
 function NotePad() {
-  let title = "Note 1";
-  let desc = "Empresa de pesquisa e inteligência";
+  const [notes, setNotes] = useState([] as NoteProps[]);
+
+  async function getNotes() {
+    const { data } = await api.get("/notes");
+    setNotes(data);
+  }
+
+  useEffect(() => {
+    getNotes();
+  }, []);
+
   return (
     <div className="notes-collection">
       <h1>Suas notas</h1>
       <div className="notes-grid">
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
-        <Note title={title} description={desc} />
+        {notes.map((note) => (
+          <Note title={note.title} description={note.description} />
+        ))}
       </div>
     </div>
   );
