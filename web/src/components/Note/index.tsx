@@ -1,6 +1,6 @@
 import "./styles.css";
 import img_delete from "../../assets/cancel_36dp.svg";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { NotesContext } from "../../contexts/NotesContext";
 interface Props {
   note_id: string;
@@ -9,11 +9,17 @@ interface Props {
 }
 
 function Note({ note_id, title, description }: Props) {
+  const [isExtended, setIsExtended] = useState(false);
+
   function cropText(text: string, size: number) {
     if (text.length > size) {
       return text.substring(0, size) + "...";
     }
     return text;
+  }
+
+  function expandOrCloseNote() {
+    setIsExtended(!isExtended);
   }
 
   const { deleteNote } = useContext(NotesContext);
@@ -24,9 +30,11 @@ function Note({ note_id, title, description }: Props) {
         <img src={img_delete} alt="Delete" />
       </button>
       <div className="note">
-        <h2>{cropText(title, 20)}</h2>
+        <h2 onClick={expandOrCloseNote}>
+          {isExtended ? title : cropText(title, 20)}
+        </h2>
         <hr />
-        <p>{cropText(description, 31)}</p>
+        <p>{isExtended ? description : cropText(description, 31)}</p>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@
 .note h2 {
   color: var(--color-note-title);
   font-size: larger;
+  cursor: pointer;
 }
 
 .note hr {
@@ -27,6 +28,7 @@
   right: -1rem;
   border: none;
   background-color: transparent;
+  cursor: pointer;
 }
 
 @media (max-width: 640px) {
