@@ -1,14 +1,13 @@
 import "./styles.css";
-import { api } from "../../services/api";
 import { useState } from "react";
+import { useContext } from "react";
+import { NotesContext } from "../../contexts/NotesContext";
 
 function NotePad() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
 
-  function createNote() {
-    api.post("/notes", { title, description });
-  }
+  const { createNote } = useContext(NotesContext);
 
   return (
     <div className="notepad">
@@ -23,7 +22,9 @@ function NotePad() {
         onChange={(e) => setDescription(e.target.value)}
       ></textarea>
       <div className="btn-container">
-        <button onClick={createNote}>CRIAR NOTA</button>
+        <button onClick={() => createNote(title, description)}>
+          CRIAR NOTA
+        </button>
       </div>
     </div>
   );
