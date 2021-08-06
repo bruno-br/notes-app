@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 interface NoteProps {
+  id: string;
   title: string;
   description: string;
 }
@@ -26,7 +27,11 @@ function NotePad() {
       <h1>Suas notas</h1>
       <div className="notes-grid">
         {notes.map((note) => (
-          <Note title={note.title} description={note.description} />
+          <Note
+            note_id={note.id}
+            title={note.title}
+            description={note.description}
+          />
         ))}
       </div>
     </div>
