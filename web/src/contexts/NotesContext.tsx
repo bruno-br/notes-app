@@ -1,14 +1,16 @@
-import { useState } from "react";
-import { createContext, ReactNode } from "react";
+import { useEffect } from "react";
+import { useState, createContext, ReactNode } from "react";
+import { api } from "../services/api";
 
 interface NoteData {
-  note_id: string;
+  id: string;
   title: string;
   description: string;
 }
 
 interface NotesContextData {
   notes: NoteData[];
+  getNotes: () => void;
 }
 
 const NotesContext = createContext({} as NotesContextData);
@@ -19,8 +21,20 @@ interface NotesProviderProps {
 
 function NotesProvider({ children }: NotesProviderProps) {
   const [notes, setNotes] = useState([]);
+
+  async function getNotes() {
+    const { data } = await api.get("/notes");
+    setNotes(data);
+  }
+
+  useEffect(() => {
+    getNotes();
+  }, []);
+
   return (
-    <NotesContext.Provider value={{ notes }}>{children}</NotesContext.Provider>
+    <NotesContext.Provider value={{ notes, getNotes }}>
+      {children}
+    </NotesContext.Provider>
   );
 }
 

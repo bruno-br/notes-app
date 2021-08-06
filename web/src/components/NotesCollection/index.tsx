@@ -1,26 +1,10 @@
 import "./styles.css";
 import Note from "../Note";
-import { api } from "../../services/api";
-import { useState } from "react";
-import { useEffect } from "react";
-
-interface NoteProps {
-  id: string;
-  title: string;
-  description: string;
-}
+import { useContext } from "react";
+import { NotesContext } from "../../contexts/NotesContext";
 
 function NotePad() {
-  const [notes, setNotes] = useState([] as NoteProps[]);
-
-  async function getNotes() {
-    const { data } = await api.get("/notes");
-    setNotes(data);
-  }
-
-  useEffect(() => {
-    getNotes();
-  }, []);
+  const { notes } = useContext(NotesContext);
 
   return (
     <div className="notes-collection">
