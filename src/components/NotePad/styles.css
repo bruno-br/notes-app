@@ -1,7 +1,7 @@
 .notepad {
   display: flex;
   flex-direction: column;
-  padding-left: 2rem;
+  padding-left: 4rem;
   padding-right: 4rem;
 }
 
@@ -44,4 +44,20 @@ textarea {
 
 .btn-container {
   text-align: right;
+}
+
+@media (max-width: 1080px) {
+  .container {
+    align-items: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .notepad {
+    padding: 0;
+  }
+  .notepad input,
+  textarea {
+    width: 10rem;
+  }
 }

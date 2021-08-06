@@ -1,8 +1,9 @@
 .notes-collection {
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   padding-left: 4rem;
+  padding-right: 4rem;
 }
 
 .notes-collection h1 {
@@ -14,4 +15,14 @@
   display: grid;
   grid-gap: 4rem;
   grid-template-columns: repeat(auto-fill, minmax(24rem, 1fr));
+  justify-items: center;
+}
+
+@media (max-width: 560px) {
+  .notes-collection {
+    padding: 0;
+  }
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
 }
