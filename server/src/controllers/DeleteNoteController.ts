@@ -12,6 +12,6 @@ export class DeleteNotesController {
     const deleteNoteService = new DeleteNoteService();
     const note = await deleteNoteService.execute(id);
 
-    return res.status(200).json(note);
+    return res.status(200).send();
   }
 }
